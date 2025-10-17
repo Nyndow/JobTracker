@@ -1,0 +1,36 @@
+@reference "tailwindcss";
+
+/* Info list and items */
+.info-list {
+  @apply space-y-3;
+}
+
+.info-item {
+  @apply p-3 bg-white rounded-lg shadow-md;
+}
+
+.info-value{
+  @apply whitespace-pre-line;
+}
+
+/* Style degree levels */
+.degree-1 {
+  @apply border-l-4 border-indigo-500;
+}
+
+.degree-2 {
+  @apply border-l-4 border-purple-500;
+}
+
+.degree-3 {
+  @apply border-l-4 border-pink-500;
+}
+
+/* Links */
+.info-link {
+  @apply text-indigo-600 hover:text-indigo-800 hover:underline;
+}
+
+.info-title {
+  @apply font-semibold text-lg mb-1 text-gray-700;
+}

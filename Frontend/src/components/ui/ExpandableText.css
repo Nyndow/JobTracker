@@ -1,0 +1,17 @@
+@reference "tailwindcss";
+
+.expandable-container {
+  @apply inline;
+}
+
+.expandable-text {
+  @apply whitespace-pre-line;
+}
+
+.expandable-toggle {
+  @apply ml-2 text-blue-600 text-sm underline cursor-pointer bg-transparent border-0;
+}
+
+.expandable-toggle:hover {
+  @apply text-blue-700;
+}

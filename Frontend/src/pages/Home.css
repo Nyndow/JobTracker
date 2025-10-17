@@ -1,0 +1,16 @@
+@reference "tailwindcss";
+
+/* Container */
+.home-container {
+  @apply flex flex-col items-center justify-center min-h-screen min-w-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 space-y-8;
+}
+
+/* Title */
+.home-title {
+  @apply text-5xl font-extrabold text-white drop-shadow-lg text-center;
+}
+
+/* Button */
+.home-button {
+  @apply px-6 py-3 bg-white text-indigo-600 font-semibold rounded-full shadow-lg hover:bg-indigo-100 transition;
+}

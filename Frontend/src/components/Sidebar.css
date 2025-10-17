@@ -1,0 +1,71 @@
+@reference "tailwindcss";
+
+/* Sidebar container */
+.sidebar {
+  @apply fixed top-0 left-0 h-screen transition-all duration-300
+         bg-gray-100 dark:bg-gray-900 shadow-lg;
+}
+
+.sidebar-expanded {
+  @apply w-64;
+}
+
+.sidebar-collapsed {
+  @apply w-20;
+}
+
+/* Toggle button */
+.sidebar-toggle {
+  @apply p-2 text-gray-800 dark:text-gray-100 rounded-lg
+         hover:bg-gray-200 dark:hover:bg-gray-700 transition;
+}
+
+/* Individual link */
+.sidebar-link {
+  @apply flex items-center justify-center p-2 rounded-lg hover:scale-105 transition-all
+         text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700;
+}
+
+/* Expanded link */
+.sidebar-link-expanded {
+  @apply justify-center flex items-center;
+}
+
+/* Collapsed link: center icon horizontally & vertically */
+.sidebar-link-collapsed {
+  @apply flex items-center px-0;
+}
+
+/* Icon */
+.sidebar-link-icon {
+  @apply w-6 h-6 text-gray-600 dark:text-gray-300;
+  /* horizontally center icon when collapsed */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Text */
+.sidebar-link-text {
+  @apply flex items-center font-medium text-gray-800 dark:text-gray-100;
+}
+
+/* Badge */
+.sidebar-badge {
+  @apply ml-auto inline-flex items-center justify-center px-2 text-sm font-medium
+         bg-gray-300 dark:bg-gray-700 rounded-full text-gray-800 dark:text-gray-200;
+}
+
+/* Divider */
+.sidebar-divider {
+  @apply my-3 border-gray-700;
+}
+
+/* Loading / error messages */
+.sidebar-message {
+  @apply px-3 text-gray-400 dark:text-gray-300;
+}
+
+.sidebar-error {
+  @apply px-3 text-red-400;
+}

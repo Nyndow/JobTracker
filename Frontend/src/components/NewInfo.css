@@ -1,0 +1,45 @@
+@reference "tailwindcss";
+
+.new-info-container{
+   @apply fixed inset-0 bg-black/40 flex items-center justify-center z-50 
+}
+
+.new-info-box{
+    @apply bg-white rounded-lg shadow-lg p-6 w-96
+}
+
+.close-icon-place{
+    @apply flex justify-end p-3
+}
+
+.close-icon{
+    @apply w-6 h-6
+}
+
+.new-info-title{
+    @apply text-xl font-bold mb-4
+}
+
+.add-form-info{
+    @apply space-y-4
+}
+
+.add-info-type{
+    @apply block font-medium mb-1
+}
+
+.select-infot-type{
+    @apply w-full border rounded p-2
+}
+
+.add-form-title{
+    @apply block font-medium mb-1
+}
+
+.add-form-value{
+    @apply block font-medium mb-1
+}
+
+.add-form-value-textarea{
+    @apply w-full border rounded p-2 h-32 resize-y
+}

@@ -1,0 +1,9 @@
+curl -X POST "http://127.0.0.1:8000/company-contacts/?company_id=1" -H "Content-Type: application/json" -d '{"firstName":"Hank","lastName":"Scorpio","email":"hank@globex.com","phone":"+1234567890","position":"CEO","notes":"Very energetic"}'
+
+curl -X POST "http://127.0.0.1:8000/company-contacts/?company_id=2" -H "Content-Type: application/json" -d '{"firstName":"Peter","lastName":"Gibbons","email":"peter@initech.com","phone":"+1987654321","position":"Software Engineer","notes":"Works in TPS reports"}'
+
+curl -X POST "http://127.0.0.1:8000/company-contacts/?company_id=3" -H "Content-Type: application/json" -d '{"firstName":"Alice","lastName":"Abernathy","email":"alice@umbrella.com","phone":"+1112223333","position":"Research Director","notes":"Handles top-secret projects"}'
+
+curl -X POST "http://127.0.0.1:8000/company-contacts/?company_id=4" -H "Content-Type: application/json" -d '{"firstName":"Pepper","lastName":"Potts","email":"pepper@stark.com","phone":"+4445556666","position":"COO","notes":"Manages daily operations"}'
+
+curl -X POST "http://127.0.0.1:8000/company-contacts/?company_id=5" -H "Content-Type: application/json" -d '{"firstName":"Lucius","lastName":"Fox","email":"lucius@wayne.com","phone":"+7778889999","position":"CTO","notes":"Inventor and technology expert"}'

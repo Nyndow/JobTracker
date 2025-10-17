@@ -1,0 +1,21 @@
+@reference "tailwindcss";
+
+/* Page container */
+.info-container {
+  @apply p-6 min-h-screen;
+}
+
+/* Page title */
+.page-title {
+  @apply text-3xl font-extrabold mb-6 text-gray-800;
+}
+
+/* Loading & Error */
+.loading-text {
+  @apply text-gray-600 italic;
+}
+
+.error-text {
+  @apply text-red-500;
+}
+

@@ -1,0 +1,53 @@
+@reference "tailwindcss";
+
+/* Button style */
+.info-button {
+  @apply px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow hover:bg-indigo-700 transition;
+}
+
+/* Page container */
+.company-container {
+  @apply p-6 min-h-screen;
+}
+
+/* Section titles */
+.section-title {
+  @apply text-2xl font-bold mb-4 text-gray-800;
+}
+
+/* Jobs list */
+.jobs-list {
+  @apply list-disc pl-6;
+}
+
+.job-link {
+  @apply mb-2 text-indigo-600 hover:text-indigo-800 hover:underline cursor-pointer transition;
+}
+
+/* Summary card */
+.summary-card {
+  @apply bg-white p-4 rounded-lg shadow-md mb-6;
+}
+
+/* Contacts card */
+.contact-card {
+  @apply bg-white p-4 rounded-lg shadow-md mb-4;
+}
+
+.contact-name {
+  @apply font-semibold text-gray-900;
+}
+
+.contact-info {
+  @apply text-gray-700 text-sm;
+}
+
+/* Error text */
+.error-text {
+  @apply text-red-500;
+}
+
+/* Loading text */
+.loading-text {
+  @apply text-gray-600 italic;
+}

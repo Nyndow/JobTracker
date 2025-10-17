@@ -1,0 +1,9 @@
+curl -X POST "http://127.0.0.1:8000/job-info/?job_id=1" -H "Content-Type: application/json" -d '{"infoType": "text","value": "Develop and maintain internal software solutions","degree": 2}'
+
+curl -X POST "http://127.0.0.1:8000/job-info/?job_id=2" -H "Content-Type: application/json" -d '{"infoType": "text","value": "Analyze business systems and improve efficiency","degree": 2}'
+
+curl -X POST "http://127.0.0.1:8000/job-info/?job_id=3" -H "Content-Type: application/json" -d '{"infoType": "text","value": "Conduct experiments and maintain lab safety","degree": 3}'
+
+curl -X POST "http://127.0.0.1:8000/job-info/?job_id=4" -H "Content-Type: application/json" -d '{"infoType": "text","value": "Design mechanical components for new inventions","degree": 2}'
+
+curl -X POST "http://127.0.0.1:8000/job-info/?job_id=5" -H "Content-Type: application/json" -d '{"infoType": "text","value": "Design innovative products for mass production","degree": 2}'

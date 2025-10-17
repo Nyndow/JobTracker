@@ -1,0 +1,39 @@
+curl -X POST http://127.0.0.1:8000/companies/ \
+     -H "Content-Type: application/json" \
+     -d '{
+           "name": "Wayne Enterprises",
+           "companyInfos": [],
+           "contacts": []
+         }'
+
+curl -X POST http://127.0.0.1:8000/companies/ \
+     -H "Content-Type: application/json" \
+     -d '{
+           "name": "Initech",
+           "companyInfos": [],
+           "contacts": []
+         }'
+
+curl -X POST http://127.0.0.1:8000/companies/ \
+     -H "Content-Type: application/json" \
+     -d '{
+           "name": "Umbrella Corp",
+           "companyInfos": [],
+           "contacts": []
+         }'
+
+curl -X POST http://127.0.0.1:8000/companies/ \
+     -H "Content-Type: application/json" \
+     -d '{
+           "name": "Stark Industries",
+           "companyInfos": [],
+           "contacts": []
+         }'
+
+curl -X POST http://127.0.0.1:8000/companies/ \
+     -H "Content-Type: application/json" \
+     -d '{
+           "name": "Wayne Enterprises",
+           "companyInfos": [],
+           "contacts": []
+         }'

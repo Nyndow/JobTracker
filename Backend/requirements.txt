@@ -1,0 +1,6 @@
+fastapi             # FastAPI framework
+uvicorn[standard]   # ASGI server with standard extras (reload, logging)
+sqlalchemy          # ORM
+pydantic            # Data validation (usually comes with FastAPI, but good to specify)
+typing-extensions   # Required for newer type hints
+alembic             # Database migrations
