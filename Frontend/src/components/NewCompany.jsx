@@ -1,20 +1,27 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCreateCompany } from "../hooks/useCompany";
 
-export default function NewCompany({ onClose, onCreated }) {
+export default function NewCompany({ onClose }) {
   const [name, setName] = useState("");
   const [aboutCompany, setAboutCompany] = useState("");
   const [loading, setLoading] = useState(false);
   const { create } = useCreateCompany();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      await create({ name, aboutCompany });
-      onCreated?.(); // notify parent to reload company list
-      onClose();     // close modal
+      // createCompany should return the full company object including idCompany
+      const createdCompany = await create({ name, aboutCompany });
+
+      if (createdCompany?.idCompany) {
+        onClose(); // close the modal
+        // Navigate to the company page using idCompany
+        navigate(`/app/company/${createdCompany.idCompany}`);
+      }
     } catch (err) {
       console.error(err);
     } finally {

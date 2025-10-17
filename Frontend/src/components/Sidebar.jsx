@@ -20,10 +20,8 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
         </button>
       </div>
 
+      {/* Company List */}
       <ul className="sidebar-menu">
-        {isExpanded && <hr className="sidebar-divider" />}
-
-        {/* Company List */}
         {loading && isExpanded && <p className="sidebar-message">Loading companies...</p>}
         {error && isExpanded && <p className="sidebar-error">{error}</p>}
         {!loading &&
@@ -37,8 +35,9 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
             >
               <button
                 onClick={() => navigate(`/app/company/${company.idCompany}`)}
-                className={`sidebar-link ${isExpanded ? "sidebar-link-expanded" : "sidebar-link-collapsed"
-                  }`}
+                className={`sidebar-link ${
+                  isExpanded ? "sidebar-link-expanded" : "sidebar-link-collapsed"
+                }`}
               >
                 {isExpanded ? (
                   <span className="sidebar-link-text">{company.name}</span>
@@ -54,7 +53,7 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
 
       {/* Add Company Button */}
       {isExpanded && (
-        <div className="mt-auto p-3">
+        <div className="sidebar-footer">
           <button
             onClick={() => setIsCreating(true)}
             className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
@@ -68,11 +67,11 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
       {/* Modal */}
       {isCreating && (
         <NewCompany
-          onClose={() => setIsCreating(false)}
-          onCreated={() => {
-            setIsCreating(false); // close modal
-            reload();              // refresh company list
+          onClose={() => {
+            reload();
+            setIsCreating(false);
           }}
+          onCreated={() => setIsCreating(false)}
         />
       )}
     </aside>
