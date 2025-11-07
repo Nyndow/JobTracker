@@ -65,6 +65,30 @@ export async function createCompanyInfo(companyId, data) {
   return res.json();
 }
 
+export async function createCompanyInfoHTML(companyId, data) {
+  const formData = new FormData();
+  formData.append("company_id", companyId);
+  formData.append("infoType", data.infoType);
+  formData.append("titleCompInfo", data.titleCompInfo);
+  formData.append("degree", data.degree);
+
+  if (data.value) formData.append("value", data.value);
+  if (data.file) formData.append("file", data.file);
+
+  if (data.assets && Array.isArray(data.assets)) {
+    data.assets.forEach((asset) => formData.append("assets", asset));
+  }
+
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/company-info/html`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!res.ok) throw new Error("Failed to create company info HTML");
+  return res.json();
+}
+
+
 
 
 export async function fetchSummaryCompany(companyId) {

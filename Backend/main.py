@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from models.base import Base
 from config.database import engine
 from config.cors import setup_cors
@@ -15,6 +16,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 setup_cors(app)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Include routers
 app.include_router(companyRoutes.router)

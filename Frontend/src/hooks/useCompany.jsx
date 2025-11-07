@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   fetchCompanies, fetchJobsCompany, fetchCompanyContacts,
-  fetchSummaryCompany, fetchCompanyInfos, createCompanyInfo, createCompany
+  fetchSummaryCompany, fetchCompanyInfos, createCompanyInfo, createCompany,createCompanyInfoHTML
 }
   from "../services/companyServices";
 
@@ -108,37 +108,39 @@ export function useCompanySummary(companyId) {
 }
 
 //GET AND CREATE INFORMATIONS COMPANY
+
 export function useCompanyInfos(companyId) {
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // fetch infos
-  useEffect(() => {
+  // 🔁 Fetch all company infos
+  const loadInfo = async () => {
     if (!companyId) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await fetchCompanyInfos(companyId);
+      setInfo(data);
+    } catch (err) {
+      setError(err.message || "Failed to load company information");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const loadInfo = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await fetchCompanyInfos(companyId);
-        setInfo(data);
-      } catch (err) {
-        setError(err.message || "Failed to load company information");
-      } finally {
-        setLoading(false);
-      }
-    };
-
+  // 🚀 Fetch infos on mount or when companyId changes
+  useEffect(() => {
     loadInfo();
   }, [companyId]);
 
-  // create info
+  // ✳️ Create normal (non-HTML/file) info entry
   const createInfo = async (newInfo) => {
     setLoading(true);
+    setError(null);
     try {
       const created = await createCompanyInfo(companyId, newInfo);
-      setInfo((prev) => [...prev, created]); // update local state
+      setInfo((prev) => [...prev, created]); // ✅ instantly update state
       return created;
     } catch (err) {
       setError(err.message || "Failed to create info");
@@ -148,7 +150,12 @@ export function useCompanyInfos(companyId) {
     }
   };
 
-  return { info, loading, error, createInfo };
+  // 🌀 Allow manual reload (used after HTML/file creation)
+  const reload = async () => {
+    await loadInfo();
+  };
+
+  return { info, loading, error, createInfo, reload };
 }
 
 //create company 
@@ -172,6 +179,32 @@ export function useCreateCompany() {
   };
 
   return { create, loading, error };
+}
+
+//create html
+export function useCreateCompanyInfoHTML() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const createCompanyInfoHTMLHook = async (companyId, data) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const result = await createCompanyInfoHTML(companyId, data);
+      return result;
+    } catch (err) {
+      setError(err.message || "Failed to create company info HTML");
+      throw err; // optional rethrow if component needs to catch it
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return {
+    createCompanyInfoHTML: createCompanyInfoHTMLHook,
+    loading,
+    error,
+  };
 }
 
 
