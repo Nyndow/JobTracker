@@ -57,7 +57,7 @@ export default function InformationList({ info = [], loading, error, titleKey })
             {htmlItem && (
                 <HtmlViewerModal
                     onClose={() => setHtmlItem(null)}
-                    src={`${API_URL}/${htmlItem.value}`}
+                    src={`${API_URL}${htmlItem.value}`}
                 />
             )}
         </div>

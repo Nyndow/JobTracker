@@ -61,7 +61,7 @@ def create_company_info_html(
                 asset_dict = {asset.filename: asset.file.read() for asset in assets}
                 save_assets(asset_dict, files_dir)
 
-            value_to_store = file_path
+            value_to_store = "/" + file_path
         else:
             value_to_store = value
 
