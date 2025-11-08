@@ -7,7 +7,7 @@ from pathlib import Path
 from models.base import CompanyInformation
 from schemas.baseSchemas import CompanyInformationSchema
 from config.database import get_db
-from utils.saveHtml import save_html_file, save_assets
+from utils.saveHtml import save_file, save_assets
 
 router = APIRouter(
     prefix="/company-info",
@@ -32,7 +32,7 @@ def create_company_info(info: CompanyInformationSchema, company_id: int, db: Ses
     return db_info
 
 
-@router.post("/html", response_model=CompanyInformationSchema)
+@router.post("/file", response_model=CompanyInformationSchema)
 def create_company_info_html(
     company_id: int = Form(...),
     infoType: str = Form(...),
@@ -53,13 +53,25 @@ def create_company_info_html(
 
             # Save HTML file in company folder
             filename = f"{company_id}_{original_name}.html"
-            file_path = save_html_file(company_dir, filename, file.file.read())
+            file_path = save_file(company_dir, filename, file.file.read())
 
             # Save asset files in a subfolder
             if assets:
                 files_dir = company_dir / f"{original_name}_files"
                 asset_dict = {asset.filename: asset.file.read() for asset in assets}
                 save_assets(asset_dict, files_dir)
+
+            value_to_store = "/" + file_path
+        elif infoType.lower() == "pdf":
+            if not file:
+                raise HTTPException(status_code=400, detail="PDF file is required when infoType=pdf")
+
+            original_name = Path(file.filename).stem
+            company_dir = BASE_FOLDER / "pdf" / f"company_{company_id}"
+
+            # Save PDF file in company folder
+            filename = f"{company_id}_{original_name}.pdf"
+            file_path = save_file(company_dir, filename, file.file.read())
 
             value_to_store = "/" + file_path
         else:

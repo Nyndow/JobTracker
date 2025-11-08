@@ -79,7 +79,7 @@ export async function createCompanyInfoHTML(companyId, data) {
     data.assets.forEach((asset) => formData.append("assets", asset));
   }
 
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/company-info/html`, {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/company-info/file`, {
     method: "POST",
     body: formData,
   });

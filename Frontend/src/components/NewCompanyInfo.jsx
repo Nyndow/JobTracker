@@ -11,43 +11,45 @@ export default function NewCompanyInfo({ companyId, onCreate, onClose }) {
   const [assets, setAssets] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (!selectedFile) return;
+
+    setFile(selectedFile);
+
+    // Automatically set infoType based on file extension
+    const ext = selectedFile.name.split(".").pop().toLowerCase();
+    if (ext === "html") setInfoType("html");
+    else if (ext === "pdf") setInfoType("pdf");
+    else if (ext === "txt") setInfoType("text");
+    else setInfoType("file"); // fallback for unknown extensions
+
+    // Only allow assets for HTML files
+    if (ext !== "html") setAssets([]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      let payload;
+      const payload = {
+        infoType,
+        titleCompInfo,
+        degree,
+        value,
+        idCompany: companyId,
+        file: ["html", "pdf", "file"].includes(infoType) ? file : null,
+        assets: infoType === "html" ? assets : [],
+      };
 
-      if (infoType === "file") {
-        if (!file) throw new Error("File is required");
-
-        const isHTML = file.name.toLowerCase().endsWith(".html");
-        payload = {
-          infoType: isHTML ? "html" : "file",
-          titleCompInfo,
-          degree,
-          file,
-          assets: isHTML ? assets : [],
-          value,
-          idCompany: companyId,
-        };
-      } else {
-        payload = { infoType, titleCompInfo, value, degree, idCompany: companyId };
-      }
-
-      await onCreate("company", payload); // ✅ delegate creation to parent
+      await onCreate("company", payload);
       onClose();
     } catch (err) {
       console.error(err);
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-    if (!selectedFile?.name.toLowerCase().endsWith(".html")) setAssets([]);
   };
 
   return (
@@ -63,13 +65,13 @@ export default function NewCompanyInfo({ companyId, onCreate, onClose }) {
           <div>
             <label className="add-info-type">Type</label>
             <select
-              value={infoType}
+              value={["text", "note", "link"].includes(infoType) ? infoType : "file"}
               onChange={(e) => setInfoType(e.target.value)}
               className="select-infot-type"
             >
               <option value="text">text</option>
-              <option value="link">link</option>
               <option value="note">note</option>
+              <option value="link">link</option>
               <option value="file">file</option>
             </select>
           </div>
@@ -86,8 +88,8 @@ export default function NewCompanyInfo({ companyId, onCreate, onClose }) {
             />
           </div>
 
-          {/* Value / File */}
-          {infoType === "file" ? (
+          {/* File Upload */}
+          {infoType === "file" || ["html", "pdf"].includes(infoType) ? (
             <>
               <div>
                 <label className="add-form-value">Upload File</label>
@@ -100,7 +102,7 @@ export default function NewCompanyInfo({ companyId, onCreate, onClose }) {
                 />
               </div>
 
-              {file && file.name.toLowerCase().endsWith(".html") && (
+              {infoType === "html" && (
                 <div>
                   <label className="add-form-value">Upload Assets (optional)</label>
                   <input

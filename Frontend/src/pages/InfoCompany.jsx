@@ -31,12 +31,9 @@ export default function InfoCompany() {
 const handleCreate = async (entityType, data) => {
   if (entityType !== "company") return;
   try {
-    if (data.infoType === "file" || data.infoType === "html") {
-      console.log("Creating HTML info...");
+    if (data.infoType === "file" || data.infoType === "html" || data.infoType === "pdf") {
       await createCompanyInfoHTML(id, data);
-      console.log("Reloading infos...");
       await reload(); // ✅ refetch
-      console.log("Reload complete!");
     } else {
       const created = await createInfo(data);
       setLocalInfo((prev) => [...prev, created]);

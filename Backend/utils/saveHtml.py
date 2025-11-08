@@ -3,13 +3,11 @@ from pathlib import Path
 HTML_FOLDER = Path("static/html")
 HTML_FOLDER.mkdir(parents=True, exist_ok=True)  # create folder if it doesn't exist
 
-def save_html_file(folder: Path, filename: str, content: bytes) -> str:
+def save_file(folder: Path, filename: str, content: bytes) -> str:
     folder.mkdir(parents=True, exist_ok=True)
 
     # Sanitize filename
     safe_filename = "".join(c for c in filename if c.isalnum() or c in ("-", "_", "."))
-    if not safe_filename.lower().endswith(".html"):
-        safe_filename += ".html"
 
     file_path = folder / safe_filename
 
