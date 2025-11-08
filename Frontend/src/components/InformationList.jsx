@@ -50,7 +50,7 @@ export default function InformationList({ info = [], loading, error, titleKey })
                         ) : item.infoType === "pdf" ? (
                             <button
                                 onClick={() => setPdfItem(item)}
-                                className="text-blue-600 underline hover:text-blue-800"
+                                className="text-blue-600 underline min-w-full hover:text-blue-800"
                             >
                                 Open PDF
                             </button>

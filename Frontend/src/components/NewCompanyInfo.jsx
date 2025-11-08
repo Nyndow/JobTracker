@@ -69,10 +69,10 @@ export default function NewCompanyInfo({ companyId, onCreate, onClose }) {
               onChange={(e) => setInfoType(e.target.value)}
               className="select-infot-type"
             >
-              <option value="text">text</option>
-              <option value="note">note</option>
-              <option value="link">link</option>
-              <option value="file">file</option>
+              <option value="text">Text</option>
+              <option value="note">Note</option>
+              <option value="link">Link</option>
+              <option value="file">File</option>
             </select>
           </div>
 

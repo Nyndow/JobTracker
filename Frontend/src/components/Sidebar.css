@@ -6,96 +6,67 @@
          bg-gray-100 dark:bg-gray-900 shadow-lg;
 }
 
-.sidebar-expanded {
-  @apply w-64;
+.sidebar-expanded { @apply w-64; }   /* 16rem */
+.sidebar-collapsed { @apply w-20; }  /* 5rem */
+
+/* Top bar */
+.sidebar-top { @apply flex flex-col items-center p-3; }
+.sidebar-top-row { @apply flex justify-between items-center w-full; }
+
+/* Buttons (toggle / home / add / link) */
+.sidebar-toggle,
+.sidebar-home,
+.sidebar-add-company,
+/* All sidebar buttons (company buttons) */
+.sidebar-link {
+  @apply flex items-center justify-center p-2 rounded-lg border-none
+         bg-transparent text-gray-800 dark:text-gray-100 cursor-pointer
+         transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-700
+         hover:text-gray-900 dark:hover:text-gray-100
+         w-full h-12; /* fixed width/height */
 }
 
-.sidebar-collapsed {
-  @apply w-20;
+/* Expanded link (text + icon) */
+.sidebar-link-expanded {
+  @apply flex items-center justify-center gap-2;
 }
 
-/* Toggle button */
-.sidebar-toggle {
-  @apply p-2 text-gray-800 dark:text-gray-100 rounded-lg
-         hover:bg-gray-200 dark:hover:bg-gray-700 transition;
+/* Collapsed link (icon only) */
+.sidebar-link-collapsed {
+  @apply flex items-center justify-center;
 }
+
+
+.sidebar-toggle:hover,
+.sidebar-home:hover,
+.sidebar-add-company:hover,
+.sidebar-link:hover {
+  @apply bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+}
+
+/* Icon sizes */
+.sidebar-icon { @apply w-6 h-6; }        /* 1.5rem */
+.sidebar-icon-small { @apply w-5 h-5; }  /* 1.25rem */
 
 /* Scrollable company list */
-.sidebar-menu {
-  @apply flex-1 overflow-y-auto px-2;
-  scrollbar-width: thin;        /* Firefox */
-  scrollbar-color: transparent transparent; /* hide by default */
+.sidebar-menu { @apply flex-1 overflow-y-auto p-2; }
+
+/* Scrollbar styling (custom) */
+.sidebar-menu::-webkit-scrollbar { width: 4px; background: transparent; }
+.sidebar-menu::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-700 rounded-full;
 }
 
-/* Show scrollbar on hover */
-.sidebar-menu:hover {
-  scrollbar-color: rgba(156, 163, 175, 0.5) transparent; /* gray-400 thumb */
-}
+/* Footer / Add Company */
+.sidebar-footer { @apply p-3 flex-shrink-0; }
 
-/* Webkit scrollbar */
-.sidebar-menu::-webkit-scrollbar {
-  width: 4px;
-  background: transparent; /* hide by default */
-}
-
-.sidebar-menu:hover::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-gray-700 rounded;
-}
-
-/* Footer / Add Company button container */
-.sidebar-footer {
-  @apply flex-shrink-0 p-3;
-}
-
-/* Individual link */
-.sidebar-link {
-  @apply flex items-center justify-center p-2 rounded-lg hover:scale-105 transition-all
-         text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700;
-
-  /* Reset global button styles that break alignment */
-  border: none;       /* remove global border */
-  background-color: transparent; /* keep sidebar background */
-}
-
-/* Expanded link */
-.sidebar-link-expanded {
-  @apply justify-center flex items-center;
-}
-
-/* Collapsed link: center icon horizontally & vertically */
-.sidebar-link-collapsed {
-  @apply flex items-center px-0;
-}
-
-/* Icon */
-.sidebar-link-icon {
-  @apply w-6 h-6 text-gray-600 dark:text-gray-300;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Text */
-.sidebar-link-text {
-  @apply flex items-center font-medium text-gray-800 dark:text-gray-100;
-}
-
-/* Badge */
-.sidebar-badge {
-  @apply ml-auto inline-flex items-center justify-center px-2 text-sm font-medium
-         bg-gray-300 dark:bg-gray-700 rounded-full text-gray-800 dark:text-gray-200;
-}
-
-/* Divider */
-.sidebar-divider {
-  @apply my-3 border-gray-700;
-}
+/* Sidebar link text */
+.sidebar-link-text { @apply flex items-center font-medium text-gray-800 dark:text-gray-100; }
 
 /* Loading / error messages */
-.sidebar-message {
-  @apply px-3 text-gray-400 dark:text-gray-300;
-}
+.sidebar-message { @apply p-3 text-gray-400 dark:text-gray-300; }
+.sidebar-error { @apply p-3 text-red-400; }
 
-.sidebar-error {
-  @apply px-3 text-red-400;
-}
+/* Collapsed margin for home button */
+.mb-2 { @apply mb-2; }
+
