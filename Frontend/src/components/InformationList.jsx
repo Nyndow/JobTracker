@@ -3,10 +3,12 @@ import Menu from "./ui/Menu";
 import ExpandableText from "./ui/ExpandableText";
 import { useState } from "react";
 import HtmlViewerModal from "./HtmlViewer";
+import PdfViewerModal from "./PdfViewer";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
 export default function InformationList({ info = [], loading, error, titleKey }) {
-    const [htmlItem, setHtmlItem] = useState(null); // track the HTML modal item
+    const [htmlItem, setHtmlItem] = useState(null);
+    const [pdfItem, setPdfItem] = useState(null);
     const API_URL = import.meta.env.VITE_API_URL;
     if (loading) return <p className="loading-text">Loading information...</p>;
     if (error) return <p className="error-text">{error}</p>;
@@ -44,9 +46,19 @@ export default function InformationList({ info = [], loading, error, titleKey })
                             >
                                 Open HTML
                             </button>
-                        ) : (
-                            <ExpandableText text={item.value} />
-                        )}
+
+                        ) : item.infoType === "pdf" ? (
+                            <button
+                                onClick={() => setPdfItem(item)}
+                                className="text-blue-600 underline hover:text-blue-800"
+                            >
+                                Open PDF
+                            </button>
+                        ) :
+
+                            (
+                                <ExpandableText text={item.value} />
+                            )}
                     </div>
 
                     <Menu items={menuItems(item)} orientation="vertical" className="w-32" />
@@ -58,6 +70,12 @@ export default function InformationList({ info = [], loading, error, titleKey })
                 <HtmlViewerModal
                     onClose={() => setHtmlItem(null)}
                     src={`${API_URL}${htmlItem.value}`}
+                />
+            )}
+            {pdfItem && (
+                <PdfViewerModal
+                    onClose={() => setPdfItem(null)}
+                    src={`${API_URL}${pdfItem.value}`}
                 />
             )}
         </div>
