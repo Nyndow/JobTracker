@@ -20,20 +20,6 @@ def create_job(job: JobSchema, company_id: int, db: Session = Depends(get_db)):
     )
     db.add(db_job)
     db.commit()
-    db.refresh(db_job)
-
-    # Add job information
-    for info in job.jobInfos:
-        ji = JobInformation(
-            idJob=db_job.idJob,
-            infoType=info.infoType,
-            value=info.value,
-            degree=info.degree
-        )
-        db.add(ji)
-
-    db.commit()
-    db.refresh(db_job)
     return db_job
 
 # Get all jobs for a company
@@ -41,6 +27,12 @@ def create_job(job: JobSchema, company_id: int, db: Session = Depends(get_db)):
 def get_jobs(company_id: int, db: Session = Depends(get_db)):
     jobs = db.query(Job).filter(Job.idCompany == company_id).all()
     return jobs
+
+# Get the total number of jobs
+@router.get("/count")
+def get_jobs_count(db: Session = Depends(get_db)):
+    count = db.query(Job).count()
+    return {"total_jobs": count}
 
 # Get a single job
 @router.get("/{job_id}", response_model=JobResponseSchema)

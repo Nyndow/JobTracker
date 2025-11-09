@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useCompanyInfos } from "../hooks/useCompany";
 import { useCreateCompanyInfoHTML } from "../hooks/useCompany"; // ✅ import it
 import InfoFilterSidebar from "../components/InfoFilterBar";
-import InformationList from "../components/InformationList";
-import NewCompanyInfo from "../components/NewCompanyInfo";
+import InformationList from "../components/viewer/InformationList";
+import NewCompanyInfo from "../components/creater/NewCompanyInfo";
 import "./InfoCompany.css";
 
 export default function InfoCompany() {

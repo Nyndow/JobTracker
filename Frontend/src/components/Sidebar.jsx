@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Bars3Icon, XMarkIcon, HomeIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useFetchCompanies } from "../hooks/useCompany";
-import NewCompany from "./NewCompany";
+import NewCompany from "./creater/NewCompany";
 import "./Sidebar.css";
 
 export default function Sidebar({ isExpanded, setIsExpanded }) {
@@ -36,7 +36,7 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
           </>
         )}
       </div>
-
+      {isExpanded && <div className="sidebar-separator"></div>}
       {/* Company List */}
       {isExpanded && (
         <ul className="sidebar-menu">
@@ -62,6 +62,7 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
         </ul>
       )}
 
+      {isExpanded && <div className="sidebar-separator"></div>}
       {/* Add Company Button */}
       {isExpanded && (
         <div className="sidebar-footer">

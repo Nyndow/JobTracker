@@ -15,6 +15,16 @@
   @apply text-2xl font-bold mb-4 text-gray-800;
 }
 
+
+/* Create Job button (match sidebar-add-company style) */
+.create-job-button {
+  @apply flex items-center justify-center p-2 rounded-lg border-none bg-white text-gray-900 font-semibold shadow h-12 hover:bg-gray-200;
+}
+
+
+
+
+
 /* Jobs list */
 .jobs-list {
   @apply list-disc pl-6;

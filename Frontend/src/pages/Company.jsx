@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetJobsCompany, useCompanyContacts, useCompanySummary }
-  from "../hooks/useCompany";
+import { useGetJobsCompany, useCompanyContacts, useCompanySummary } from "../hooks/useCompany";
 import "./Company.css";
 
 export default function CompanyPage() {
@@ -22,13 +21,24 @@ export default function CompanyPage() {
         >
           Go to Company Information
         </button>
-
       </div>
 
-      {/* Jobs list */}
+      {/* Jobs Section */}
       <h2 className="section-title">Jobs</h2>
+
+      {/* ➕ Create Job button above the jobs list */}
+      <div className=" mb-4">
+        <button
+          className="create-job-button"
+          onClick={() => navigate(`/app/company/${id}/jobs/new`)}
+        >
+          + Create New Job
+        </button>
+      </div>
+
       {jobsLoading && <p className="loading-text">Loading jobs...</p>}
       {jobsError && <p className="error-text">{jobsError}</p>}
+
       <ul className="jobs-list">
         {jobs.map((job) => (
           <li

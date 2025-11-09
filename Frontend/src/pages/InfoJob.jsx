@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useJobInfos } from "../hooks/useJob";
 import InfoFilterSidebar from "../components/InfoFilterBar";
-import InformationList from "../components/InformationList";
-import NewJobInfo from "../components/NewJobInfo"; // <-- updated
+import InformationList from "../components/viewer/InformationList";
+import NewJobInfo from "../components/creater/NewJobInfo"; // <-- updated
 import "./InfoCompany";
 
 export default function InfoJob() {

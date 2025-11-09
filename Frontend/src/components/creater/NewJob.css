@@ -1,0 +1,49 @@
+@reference "tailwindcss";
+
+/* NewJob.css */
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black/40 flex items-center justify-center z-50;
+}
+
+.modal-container {
+  @apply bg-white rounded-lg shadow-lg p-6 w-96;
+}
+
+.modal-title {
+  @apply text-xl font-bold mb-4;
+}
+
+.form {
+  @apply space-y-4;
+}
+
+.label {
+  @apply block font-medium mb-1;
+}
+
+.select,
+.input,
+.textarea {
+  @apply w-full border rounded p-2;
+}
+
+.textarea {
+  @apply h-24 resize-y;
+}
+
+.button-group {
+  @apply flex justify-end gap-2;
+}
+
+.cancel-btn {
+  @apply px-4 py-2 border rounded;
+}
+
+.submit-btn {
+  @apply px-4 py-2 bg-blue-600 text-white rounded;
+}
+
+.submit-btn:disabled {
+  @apply opacity-70 cursor-not-allowed;
+}

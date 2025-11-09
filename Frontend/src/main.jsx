@@ -7,10 +7,10 @@ import Home from './pages/Home'
 import Test from './pages/Test'
 import CompanyPage from './pages/Company'
 import InfoCompany from './pages/InfoCompany'
-import PdfViewer from './components/PdfViewer' // <-- import your new PDF viewer
+import PdfViewer from './components/viewer/PdfViewer' // <-- import your new PDF viewer
 import './index.css'
 import InfoJob from './pages/InfoJob'
-import HtmlViewer from './components/HtmlViewer' // <-- import your new HTML viewer
+import HtmlViewer from './components/viewer/HtmlViewer' // <-- import your new HTML viewer
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

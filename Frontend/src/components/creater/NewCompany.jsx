@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCreateCompany } from "../hooks/useCompany";
+import { useCreateCompany } from "../../hooks/useCompany";
 
 export default function NewCompany({ onClose }) {
   const [name, setName] = useState("");

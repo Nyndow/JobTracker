@@ -8,6 +8,25 @@ export async function fetchJobInfos(jobId) {
   return res.json();
 }
 
+export async function createJob({ title, companyId }) {
+  const payload = { title };
+
+  const res = await fetch(`${API_URL}/jobs?company_id=${companyId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Failed to create job: ${errText}`);
+  }
+
+  return res.json();
+}
+
 export async function createJobInfo(jobId, data) {
   const res = await fetch(`${API_URL}/job-info/?job_id=${jobId}`, {
     method: "POST",
@@ -32,5 +51,7 @@ mollit anim id est laborum. This is a detailed test summary for the job, providi
 
   return data;
 }
+
+
 
 

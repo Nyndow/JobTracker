@@ -1,6 +1,6 @@
 import "./InformationList.css";
-import Menu from "./ui/Menu";
-import ExpandableText from "./ui/ExpandableText";
+import Menu from "../ui/Menu";
+import ExpandableText from "../ui/ExpandableText";
 import { useState } from "react";
 import HtmlViewerModal from "./HtmlViewer";
 import PdfViewerModal from "./PdfViewer";

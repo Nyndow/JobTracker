@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  fetchSummaryJob, fetchJobInfos, createJobInfo
+  fetchSummaryJob, fetchJobInfos, createJobInfo, createJob
 }
   from "../services/jobServices";
 
@@ -75,5 +75,28 @@ export function useJobInfos(jobId) {
 
   return { info, loading, error, createInfo };
 }
+
+export function useCreateJob() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const create = async (jobData) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await createJob(jobData);
+      return data;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { create, loading, error };
+}
+
+
 
 
