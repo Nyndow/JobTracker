@@ -7,11 +7,11 @@
 }
 
 .modal-container {
-  @apply bg-white rounded-lg shadow-lg p-6 w-96;
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-96;
 }
 
 .modal-title {
-  @apply text-xl font-bold mb-4;
+  @apply text-xl font-bold mb-4 text-gray-900 dark:text-gray-100;
 }
 
 .form {
@@ -19,7 +19,7 @@
 }
 
 .label {
-  @apply block font-medium mb-1;
+  @apply block font-medium mb-1 text-gray-700 dark:text-gray-300;
 }
 
 .select,

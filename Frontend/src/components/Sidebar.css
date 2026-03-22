@@ -25,6 +25,10 @@
   @apply flex justify-between items-center w-full;
 }
 
+.sidebar-top-controls {
+  @apply flex items-center gap-2;
+}
+
 .sidebar-home,
 .sidebar-toggle {
   @apply p-1.5 rounded-md text-gray-800 transition-colors duration-200;
@@ -118,11 +122,13 @@
 
 /* Smaller hover area for Home and Close buttons */
 .sidebar-home,
-.sidebar-toggle {
-  @apply p-1.5 rounded-md text-gray-800 transition-colors duration-200;
+.sidebar-toggle,
+.sidebar-theme-toggle {
+  @apply p-1.5 rounded-md text-gray-800 dark:text-gray-100 transition-colors duration-200;
 }
 
 .sidebar-home:hover,
-.sidebar-toggle:hover {
-  @apply bg-gray-200 text-gray-900;
+.sidebar-toggle:hover,
+.sidebar-theme-toggle:hover {
+  @apply bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
 }

@@ -7,7 +7,7 @@
 
 /* Modal container */
 .html-viewer-modal {
-  @apply bg-white rounded-lg shadow-lg p-4 w-11/12 md:w-4/5 lg:w-3/4 h-[80vh] flex flex-col;
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 w-11/12 md:w-4/5 lg:w-3/4 h-[80vh] flex flex-col;
 }
 
 /* Header */
@@ -20,7 +20,7 @@
 }
 
 .html-viewer-close {
-  @apply text-gray-600 hover:text-black text-xl font-bold;
+  @apply text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white text-xl font-bold;
 }
 
 /* Iframe content */

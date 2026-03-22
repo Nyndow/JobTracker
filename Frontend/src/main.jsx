@@ -11,6 +11,7 @@ import PdfViewer from './components/viewer/PdfViewer' // <-- import your new PDF
 import './index.css'
 import InfoJob from './pages/InfoJob'
 import HtmlViewer from './components/viewer/HtmlViewer' // <-- import your new HTML viewer
+import NewJob from './components/creater/NewJob'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="company/:id" element={<CompanyPage />} />
           <Route path="company/:id/info" element={<InfoCompany />} />
           <Route path="jobs/:id" element={<InfoJob />} />
+          <Route path="company/:id/jobs/new" element={<NewJob />} />
 
           {/* PDF Viewer route */}
           <Route path="pdf" element={<PdfViewer />} />

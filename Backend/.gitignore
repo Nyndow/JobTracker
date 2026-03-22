@@ -1,1 +1,5 @@
 data/database/jobtracker.db 
+venv/ 
+__pycache__/
+*.pyc
+.DS_Store

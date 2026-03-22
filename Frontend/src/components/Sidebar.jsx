@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Bars3Icon, XMarkIcon, HomeIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, HomeIcon, PlusCircleIcon, SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { useFetchCompanies } from "../hooks/useCompany";
 import NewCompany from "./creater/NewCompany";
 import "./Sidebar.css";
 
-export default function Sidebar({ isExpanded, setIsExpanded }) {
+export default function Sidebar({ isExpanded, setIsExpanded, theme, toggleTheme }) {
   const navigate = useNavigate();
   const { companies, loading, error, reload } = useFetchCompanies();
   const [isCreating, setIsCreating] = useState(false); // modal state
@@ -21,9 +21,14 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
               <HomeIcon className="sidebar-icon" />
             </button>
 
-            <button onClick={() => setIsExpanded(!isExpanded)} className="sidebar-toggle">
-              <XMarkIcon className="sidebar-icon" />
-            </button>
+            <div className="sidebar-top-controls">
+              <button onClick={toggleTheme} className="sidebar-theme-toggle">
+                {theme === 'light' ? <MoonIcon className="sidebar-icon" /> : <SunIcon className="sidebar-icon" />}
+              </button>
+              <button onClick={() => setIsExpanded(!isExpanded)} className="sidebar-toggle">
+                <XMarkIcon className="sidebar-icon" />
+              </button>
+            </div>
           </div>
         ) : (
           <>
@@ -32,6 +37,9 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
             </button>
             <button onClick={() => navigate("/app/")} className="sidebar-home">
               <HomeIcon className="sidebar-icon" />
+            </button>
+            <button onClick={toggleTheme} className="sidebar-theme-toggle">
+              {theme === 'light' ? <MoonIcon className="sidebar-icon" /> : <SunIcon className="sidebar-icon" />}
             </button>
           </>
         )}

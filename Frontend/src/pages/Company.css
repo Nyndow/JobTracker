@@ -7,18 +7,18 @@
 
 /* Page container */
 .company-container {
-  @apply p-6 min-h-screen;
+  @apply p-6 min-h-screen bg-gray-50 dark:bg-gray-900;
 }
 
 /* Section titles */
 .section-title {
-  @apply text-2xl font-bold mb-4 text-gray-800;
+  @apply text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100;
 }
 
 
 /* Create Job button (match sidebar-add-company style) */
 .create-job-button {
-  @apply flex items-center justify-center p-2 rounded-lg border-none bg-white text-gray-900 font-semibold shadow h-12 hover:bg-gray-200;
+  @apply flex items-center justify-center p-2 rounded-lg border-none bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-semibold shadow h-12 hover:bg-gray-200 dark:hover:bg-gray-700;
 }
 
 
@@ -31,25 +31,25 @@
 }
 
 .job-link {
-  @apply mb-2 text-indigo-600 hover:text-indigo-800 hover:underline cursor-pointer transition;
+  @apply mb-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline cursor-pointer transition;
 }
 
 /* Summary card */
 .summary-card {
-  @apply bg-white p-4 rounded-lg shadow-md mb-6;
+  @apply bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-6;
 }
 
 /* Contacts card */
 .contact-card {
-  @apply bg-white p-4 rounded-lg shadow-md mb-4;
+  @apply bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-4;
 }
 
 .contact-name {
-  @apply font-semibold text-gray-900;
+  @apply font-semibold text-gray-900 dark:text-gray-100;
 }
 
 .contact-info {
-  @apply text-gray-700 text-sm;
+  @apply text-gray-700 dark:text-gray-300 text-sm;
 }
 
 /* Error text */
@@ -59,5 +59,5 @@
 
 /* Loading text */
 .loading-text {
-  @apply text-gray-600 italic;
+  @apply text-gray-600 dark:text-gray-400 italic;
 }

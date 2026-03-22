@@ -2,12 +2,12 @@
 
 /* Container of the whole page */
 .info-container {
-  @apply p-6 min-h-screen flex gap-6;
+  @apply p-6 min-h-screen flex gap-6 bg-gray-50 dark:bg-gray-900;
 }
 
 /* Sidebar wrapper for vertical centering */
 .info-sidebar {
-  @apply w-[50px] flex flex-col gap-4 p-1 bg-gray-100 rounded-lg fixed top-1/2 right-4 transform -translate-y-1/2 shadow-lg;
+  @apply w-[50px] flex flex-col gap-4 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg fixed top-1/2 right-4 transform -translate-y-1/2 shadow-lg;
 }
 
 /* Button common styles */
