@@ -1,21 +1,38 @@
-@reference "tailwindcss";
-
 /* Page container */
 .info-container {
-  @apply p-6 min-h-screen bg-gray-50 dark:bg-gray-900;
+  padding: 1.5rem;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+html.dark .info-container {
+  background-color: #111827;
 }
 
 /* Page title */
 .page-title {
-  @apply text-3xl font-extrabold mb-6 text-gray-800 dark:text-gray-100;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+html.dark .page-title {
+  color: #f3f4f6;
 }
 
 /* Loading & Error */
 .loading-text {
-  @apply text-gray-600 dark:text-gray-400 italic;
+  color: #4b5563;
+  font-style: italic;
+}
+
+html.dark .loading-text {
+  color: #9ca3af;
 }
 
 .error-text {
-  @apply text-red-500;
+  color: #ef4444;
 }
 

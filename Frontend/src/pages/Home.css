@@ -1,16 +1,53 @@
-@reference "tailwindcss";
-
 /* Container */
 .home-container {
-  @apply flex flex-col items-center justify-center min-h-screen min-w-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:from-gray-800 dark:via-gray-900 dark:to-black space-y-8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(to right, #6366f1, #8b5cf6, #ec4899);
+  gap: 2rem;
+}
+
+html.dark .home-container {
+  background: linear-gradient(to right, #1f2937, #111827, #000000);
 }
 
 /* Title */
 .home-title {
-  @apply text-5xl font-extrabold text-white dark:text-gray-100 drop-shadow-lg text-center;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 800;
+  color: white;
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  text-align: center;
+}
+
+html.dark .home-title {
+  color: #f3f4f6;
 }
 
 /* Button */
 .home-button {
-  @apply px-6 py-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-full shadow-lg hover:bg-blue-100 dark:hover:bg-gray-700 transition;
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #2563eb;
+  font-weight: 600;
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.home-button:hover {
+  background-color: #dbeafe;
+}
+
+html.dark .home-button {
+  background-color: #1f2937;
+  color: #60a5fa;
+}
+
+html.dark .home-button:hover {
+  background-color: #374151;
 }

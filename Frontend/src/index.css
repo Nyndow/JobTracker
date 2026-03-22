@@ -31,7 +31,11 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  @apply bg-gray-50 dark:bg-gray-900;
+  background-color: #f9fafb;
+}
+
+html.dark body {
+  background-color: #111827;
 }
 
 h1 {

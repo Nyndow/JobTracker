@@ -1,31 +1,77 @@
-@reference "tailwindcss";
-
 /* Container of the whole page */
 .info-container {
-  @apply p-6 min-h-screen flex gap-6 bg-gray-50 dark:bg-gray-900;
+  padding: 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  gap: 1.5rem;
+  background-color: #f9fafb;
+}
+
+html.dark .info-container {
+  background-color: #111827;
 }
 
 /* Sidebar wrapper for vertical centering */
 .info-sidebar {
-  @apply w-[50px] flex flex-col gap-4 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg fixed top-1/2 right-4 transform -translate-y-1/2 shadow-lg;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.25rem;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  position: fixed;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .info-sidebar {
+  background-color: #1f2937;
 }
 
 /* Button common styles */
 .info-btn {
-  @apply flex items-center justify-center p-1 rounded-md transition-colors;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
 /* Button active state */
 .info-btn.active {
-  @apply bg-indigo-600 text-white;
+  background-color: #4f46e5;
+  color: white;
+}
+
+html.dark .info-btn.active {
+  background-color: #6366f1;
 }
 
 /* Button default state */
 .info-btn.default {
-  @apply bg-white text-gray-800 hover:bg-gray-200;
+  background-color: white;
+  color: #1f2937;
+}
+
+.info-btn.default:hover {
+  background-color: #e5e7eb;
+}
+
+html.dark .info-btn.default {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+html.dark .info-btn.default:hover {
+  background-color: #4b5563;
 }
 
 /* Icon size inside button */
 .info-btn svg {
-  @apply w-6 h-6;
+  width: 1.5rem;
+  height: 1.5rem;
 }

@@ -1,81 +1,151 @@
-@reference "tailwindcss";
-
 /* Sidebar container */
 .sidebar {
-  @apply fixed top-0 left-0 h-screen flex flex-col transition-all duration-300 bg-gray-100 dark:bg-gray-900 shadow-lg;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  background-color: #f3f4f6;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .sidebar {
+  background-color: #111827;
 }
 
 .sidebar-expanded {
-  @apply w-64;
+  width: 16rem;
 }
 
-/* 16rem */
 .sidebar-collapsed {
-  @apply w-20;
+  width: 5rem;
 }
-
-/* 5rem */
 
 /* Top bar */
 .sidebar-top {
-  @apply flex flex-col items-center p-3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
 }
 
 .sidebar-top-row {
-  @apply flex justify-between items-center w-full;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .sidebar-top-controls {
-  @apply flex items-center gap-2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .sidebar-home,
-.sidebar-toggle {
-  @apply p-1.5 rounded-md text-gray-800 transition-colors duration-200;
+.sidebar-toggle,
+.sidebar-theme-toggle {
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+  color: #1f2937;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+html.dark .sidebar-home,
+html.dark .sidebar-toggle,
+html.dark .sidebar-theme-toggle {
+  color: #f3f4f6;
+}
+
+.sidebar-home:hover,
+.sidebar-toggle:hover,
+.sidebar-theme-toggle:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+html.dark .sidebar-home:hover,
+html.dark .sidebar-toggle:hover,
+html.dark .sidebar-theme-toggle:hover {
+  background-color: #374151;
+  color: #f3f4f6;
 }
 
 /* All sidebar buttons (company buttons) */
 .sidebar-link {
-  @apply flex items-center justify-center p-2 rounded-lg border-none bg-transparent text-gray-800 dark:text-gray-100 cursor-pointer transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 w-full h-12;
-  /* fixed width/height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: transparent;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  height: 3rem;
+}
+
+html.dark .sidebar-link {
+  color: #f3f4f6;
+}
+
+.sidebar-link:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+html.dark .sidebar-link:hover {
+  background-color: #374151;
+  color: #f3f4f6;
 }
 
 /* Expanded link (text + icon) */
 .sidebar-link-expanded {
-  @apply flex items-center justify-center gap-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 /* Collapsed link (icon only) */
 .sidebar-link-collapsed {
-  @apply flex items-center justify-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Section separators (thin horizontal line) */
 .sidebar-separator {
-  @apply border-t border-gray-300 dark:border-gray-700 my-2;
+  border-top-width: 1px;
+  border-color: #d1d5db;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-
-.sidebar-link:hover {
-  @apply bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+html.dark .sidebar-separator {
+  border-color: #374151;
 }
-
 
 /* Icon sizes */
 .sidebar-icon {
-  @apply w-6 h-6;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-/* 1.5rem */
 .sidebar-icon-small {
-  @apply w-5 h-5;
+  width: 1.25rem;
+  height: 1.25rem;
 }
-
-/* 1.25rem */
 
 /* Scrollable company list */
 .sidebar-menu {
-  @apply flex-1 overflow-y-auto p-2;
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
 }
 
 /* Scrollbar styling (custom) */
@@ -85,50 +155,96 @@
 }
 
 .sidebar-menu::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-gray-700 rounded-full;
+  background-color: #9ca3af;
+  border-radius: 9999px;
+}
+
+html.dark .sidebar-menu::-webkit-scrollbar-thumb {
+  background-color: #374151;
 }
 
 /* Footer / Add Company */
 .sidebar-footer {
-  @apply p-3 flex-shrink-0 flex justify-center items-center;
+  padding: 0.75rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sidebar-add-company {
-  @apply flex items-center justify-center p-2 rounded-lg border-none bg-white text-gray-900 font-semibold shadow
-         w-full h-12; /* match sidebar links */
-  @apply hover:bg-gray-200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: white;
+  color: #111827;
+  font-weight: 600;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  width: 100%;
+  height: 3rem;
+  transition: background-color 0.15s ease-in-out;
 }
 
+.sidebar-add-company:hover {
+  background-color: #e5e7eb;
+}
+
+html.dark .sidebar-add-company {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+html.dark .sidebar-add-company:hover {
+  background-color: #374151;
+}
 
 /* Sidebar link text */
 .sidebar-link-text {
-  @apply flex items-center font-medium text-gray-800 dark:text-gray-100
-         truncate overflow-hidden whitespace-nowrap;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #1f2937;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.dark .sidebar-link-text {
+  color: #f3f4f6;
 }
 
 /* Loading / error messages */
 .sidebar-message {
-  @apply p-3 text-gray-400 dark:text-gray-300;
+  padding: 0.75rem;
+  color: #9ca3af;
+}
+
+html.dark .sidebar-message {
+  color: #d1d5db;
 }
 
 .sidebar-error {
-  @apply p-3 text-red-400;
+  padding: 0.75rem;
+  color: #ef4444;
 }
 
 /* Collapsed margin for home button */
 .mb-2 {
-  @apply mb-2;
-}
-
-/* Smaller hover area for Home and Close buttons */
-.sidebar-home,
-.sidebar-toggle,
-.sidebar-theme-toggle {
-  @apply p-1.5 rounded-md text-gray-800 dark:text-gray-100 transition-colors duration-200;
+  margin-bottom: 0.5rem;
 }
 
 .sidebar-home:hover,
 .sidebar-toggle:hover,
 .sidebar-theme-toggle:hover {
-  @apply bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+  background-color: #e5e7eb; /* gray-200 */
+  color: #111827;           /* gray-900 */
+}
+
+/* Dark mode */
+.dark .sidebar-theme-toggle:hover {
+  background-color: #374151; /* gray-700 */
+  color: #f3f4f6;           /* gray-100 */
 }
